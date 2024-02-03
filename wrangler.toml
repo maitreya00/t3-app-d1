@@ -1,0 +1,24 @@
+# for local development
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "local-dev"
+database_id = "local-dev"
+preview_database_id = "00000000-0000-0000-0000-000000000000" # Required for Pages local development
+migrations_table = "__drizzle_d1_migrations" # Customize this value to change your applied migrations table name
+migrations_dir = "./src/server/db/out" # Customize this value to rename the `migrations` folder
+
+# for prod
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "xoxo-prod"
+database_id = "e6c777da-bb8f-4f3b-b932-6c0ed052516b"
+migrations_table = "__drizzle_d1_migrations" # customize this value to change your applied migrations table name
+migrations_dir = "./src/server/db/out" # customize this value to rename the `migrations` folder
+
+# for remote dev
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "xoxo-preview"
+database_id = "388695ba-65a7-48f7-af0c-f0327373d025"
+migrations_table = "__drizzle_d1_migrations" # customize this value to change your applied migrations table name
+migrations_dir = "./src/server/db/out" # customize this value to rename the `migrations` folder

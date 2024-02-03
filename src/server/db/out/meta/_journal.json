@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1706989891959,
+      "tag": "0000_useful_hydra",
+      "breakpoints": true
+    }
+  ]
+}
