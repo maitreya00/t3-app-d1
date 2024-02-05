@@ -8,6 +8,8 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
+
+// cloudflare workers runtime only supports edge
 export const runtime = "edge";
 
 export const metadata = {
