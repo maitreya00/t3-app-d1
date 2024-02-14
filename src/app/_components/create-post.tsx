@@ -15,15 +15,20 @@ export function CreatePost() {
       setName("");
     },
   });
+  const { data, refetch: fetchHello } = api.post.hello.useQuery({
+    text: "hello",
+  });
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
         createPost.mutate({ name });
+        await fetchHello();
       }}
       className="flex flex-col gap-2"
     >
+      <div>{data?.greeting}</div>
       <input
         type="text"
         placeholder="Title"

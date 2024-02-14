@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "pages:build": "npx @cloudflare/next-on-pages",
+    "pages:build": "pnpm next-on-pages",
     "pages:preview": "npm run pages:build && wrangler pages dev .vercel/output/static --compatibility-date=2024-01-29 --compatibility-flag=nodejs_compat",
     "pages:deploy": "pnpm pages:build && wrangler pages deploy .vercel/output/static",
     "db:push": "pnpm db:generate && pnpm wrangler d1 migrations apply local-dev --local",

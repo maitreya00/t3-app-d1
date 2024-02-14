@@ -1,26 +1,17 @@
 // Example model schema from the Drizzle docs
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
-import { sql } from "drizzle-orm";
-import { index, int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { text, integer, sqliteTable, numeric } from "drizzle-orm/sqlite-core";
 
-/**
- * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
- * database instance for multiple projects.
- *
- * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
- */
-export const posts = sqliteTable(
-  "post",
-  {
-    id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
-    name: text("name", { length: 256 }),
-    createdAt: int("created_at", { mode: "timestamp" })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: int("updatedAt", { mode: "timestamp" }),
-  },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  }),
-);
+export const products = sqliteTable("product", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name").notNull(),
+  supplierId: integer("supplier_id").notNull(),
+  categoryId: integer("category_id").notNull(),
+  quantityPerUnit: text("quantity_per_unit").notNull(),
+  unitPrice: numeric("unit_price").notNull(),
+  unitsInStock: integer("units_in_stock").notNull(),
+  unitsOnOrder: integer("units_on_order").notNull(),
+  reorderLevel: integer("reorder_level").notNull(),
+  discontinued: integer("discontinued").notNull(),
+});
