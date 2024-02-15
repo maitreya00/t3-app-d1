@@ -8,7 +8,7 @@ export const dbD1 = drizzleD1(process.env.DB, { schema: sqliteSchema });
 
 export const dbPlanetscale = drizzlePlanetscale(
   new Client({
-    url: 'mysql://3lzml4xlfqvu8nsgg5x4:pscale_pw_dFRjOsAU3abLyWMkufMTZSzh5lRg4ehwdplMgeYRNQ9@aws.connect.psdb.cloud/dev?ssl={"rejectUnauthorized":true}',
+    url: 'mysql://svgej70ngk8wac9yy58f:pscale_pw_g7Bc75UnR4RltYJf4yI2R6T4BeT7IOsSHynpVkTp6Mv@aws.connect.psdb.cloud/dev?ssl={"rejectUnauthorized":true}',
   }).connection(),
   { schema: mysqlSchema },
 );
