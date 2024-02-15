@@ -6,28 +6,26 @@ import * as mysqlSchema from "./schema-mysql";
 
 export const dbD1 = drizzleD1(process.env.DB, { schema: sqliteSchema });
 
-const regex = /mysql:\/\/([^:]+):([^@]+)@([^/]+)/;
-const matches = (process.env.PLANETSCALE_DB_URL ?? "").match(regex);
-if (!matches) throw new Error("Invalid PLANETSCALE_DB_URL");
+// const regex = /mysql:\/\/([^:]+):([^@]+)@([^/]+)/;
+// const matches = (process.env.PLANETSCALE_DB_URL ?? "").match(regex);
+// if (!matches) throw new Error("Invalid PLANETSCALE_DB_URL");
 
-const config = {
-  username: matches[1],
-  password: matches[2],
-  host: matches[3],
-  fetch: (url: string, init: RequestInit<RequestInitCfProperties>) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
-    delete (init as any).cache; // Remove cache header
-    return fetch(url, init);
-  },
-};
-// @ts-expect-error test
-const conn = connect(config);
-export const dbPlanetscale = drizzlePlanetscale(conn, { schema: mysqlSchema });
+// const config = {
+//   username: matches[1],
+//   password: matches[2],
+//   host: matches[3],
+//   fetch: (url: string, init: RequestInit<RequestInitCfProperties>) => {
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+//     delete (init as any).cache; // Remove cache header
+//     return fetch(url, init);
+//   },
+// };
+// const conn = connect(config);
+// export const dbPlanetscale = drizzlePlanetscale(conn, { schema: mysqlSchema });
 
-//
-// export const dbPlanetscale = drizzlePlanetscale(
-//   new Client({
-//     url: process.env.PLANETSCALE_DB_URL,
-//   }).connection(),
-//   { schema: mysqlSchema },
-// );
+export const dbPlanetscale = drizzlePlanetscale(
+  new Client({
+    url: process.env.PLANETSCALE_DB_URL,
+  }).connection(),
+  { schema: mysqlSchema },
+);
