@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@planetscale/database':
+    specifier: ^1.16.0
+    version: 1.16.0
   '@t3-oss/env-nextjs':
     specifier: ^0.8.0
     version: 0.8.0(typescript@5.3.3)(zod@3.22.4)
@@ -25,7 +28,7 @@ dependencies:
     version: 10.45.0
   drizzle-orm:
     specifier: ^0.29.3
-    version: 0.29.3(@cloudflare/workers-types@4.20240129.0)(@types/react@18.2.52)(react@18.2.0)
+    version: 0.29.3(@cloudflare/workers-types@4.20240129.0)(@planetscale/database@1.16.0)(@types/react@18.2.52)(react@18.2.0)
   next:
     specifier: ^14.1.0
     version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -1154,6 +1157,11 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@planetscale/database@1.16.0:
+    resolution: {integrity: sha512-HNUrTqrd8aTRZYMDcsoZ62s36sIWkMMmKZBOehoCWR2WrfNPKq+Q1yQef5okl3pSVlldFnu2h/dbHjOsDTHXug==}
+    engines: {node: '>=16'}
+    dev: false
 
   /@rollup/pluginutils@4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -2382,7 +2390,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.29.3(@cloudflare/workers-types@4.20240129.0)(@types/react@18.2.52)(react@18.2.0):
+  /drizzle-orm@0.29.3(@cloudflare/workers-types@4.20240129.0)(@planetscale/database@1.16.0)(@types/react@18.2.52)(react@18.2.0):
     resolution: {integrity: sha512-uSE027csliGSGYD0pqtM+SAQATMREb3eSM/U8s6r+Y0RFwTKwftnwwSkqx3oS65UBgqDOM0gMTl5UGNpt6lW0A==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -2454,6 +2462,7 @@ packages:
         optional: true
     dependencies:
       '@cloudflare/workers-types': 4.20240129.0
+      '@planetscale/database': 1.16.0
       '@types/react': 18.2.52
       react: 18.2.0
     dev: false

@@ -1,6 +1,3 @@
-// Example model schema from the Drizzle docs
-// https://orm.drizzle.team/docs/sql-schema-declaration
-
 import { text, integer, sqliteTable, numeric } from "drizzle-orm/sqlite-core";
 
 export const products = sqliteTable("product", {

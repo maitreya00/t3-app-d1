@@ -8,7 +8,8 @@
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:preview": "npm run pages:build && wrangler pages dev .vercel/output/static --compatibility-date=2024-01-29 --compatibility-flag=nodejs_compat",
     "pages:deploy": "pnpm pages:build && wrangler pages deploy .vercel/output/static",
-    "db:push": "pnpm db:generate && pnpm wrangler d1 migrations apply local-dev --local",
+    "db:push-d1": "pnpm db:generate && pnpm wrangler d1 migrations apply local-dev --local",
+    "db:push-planetscale": "pnpm drizzle-kit push:mysql",
     "db:studio": "drizzle-kit studio",
     "db:generate": "drizzle-kit generate:sqlite",
     "dev": "next dev",
@@ -16,6 +17,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@planetscale/database": "^1.16.0",
     "@t3-oss/env-nextjs": "^0.8.0",
     "@tanstack/react-query": "^4.18.0",
     "@trpc/client": "^10.45.0",
