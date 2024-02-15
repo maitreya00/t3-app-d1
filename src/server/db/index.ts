@@ -10,19 +10,32 @@ const regex = /mysql:\/\/([^:]+):([^@]+)@([^/]+)/;
 const matches = (process.env.PLANETSCALE_DB_URL ?? "").match(regex);
 if (!matches) throw new Error("Invalid PLANETSCALE_DB_URL");
 
+// const config = {
+//   username: matches[1],
+//   password: matches[2],
+//   host: matches[3],
+//   fetch: (url: string, init: RequestInit<RequestInitCfProperties>) => {
+//     // eslint-disable-next-line
+//     delete (init as any).cache; // Remove cache header
+//     return fetch(url, init);
+//   },
+// };
+//
+// const conn = connect(config);
 const config = {
+  host: matches[3],
   username: matches[1],
   password: matches[2],
-  host: matches[3],
-  fetch: (url: string, init: RequestInit<RequestInitCfProperties>) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
-    delete (init as any).cache; // Remove cache header
+  // eslint-disable-next-line
+  fetch: (url: string, init: any) => {
+    // eslint-disable-next-line
+    delete init["cache"];
+    // eslint-disable-next-line
     return fetch(url, init);
   },
 };
-
-// @ts-expect-error errorr
 const conn = connect(config);
+
 export const dbPlanetscale = drizzlePlanetscale(conn, { schema: mysqlSchema });
 //
 // export const dbPlanetscale = drizzlePlanetscale(
