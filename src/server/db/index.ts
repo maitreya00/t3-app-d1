@@ -29,11 +29,12 @@ const config = {
   // eslint-disable-next-line
   fetch: (url: string, init: any) => {
     // eslint-disable-next-line
-    delete (init)["cache"];
+    delete init["cache"];
     // eslint-disable-next-line
     return fetch(url, init);
   },
 };
+
 const conn = connect(config);
 
 export const dbPlanetscale = drizzlePlanetscale(conn, { schema: mysqlSchema });
