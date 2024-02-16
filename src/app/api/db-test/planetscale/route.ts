@@ -41,8 +41,8 @@ export async function GET() {
   const t1 = Date.now();
   return Response.json({
     time: t1 - t0,
-    out1,
-    out2,
+    out1: out1 ?? "NONE",
+    out2: out2 ?? "NONE",
     err,
     config,
     anotherOut: data.rows,
