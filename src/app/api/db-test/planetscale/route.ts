@@ -4,6 +4,7 @@
 import { unstable_noStore } from "next/cache";
 import { api } from "@/trpc/server";
 import { connect } from "@planetscale/database";
+import { dbD1, dbPlanetscale } from "@/server/db";
 
 export const runtime = "edge";
 
@@ -28,7 +29,8 @@ export async function GET() {
   const t0 = Date.now();
   let out;
   try {
-    const res = await api.dbTest.allProductsPlanetscale.query();
+    // const res = await api.dbTest.allProductsPlanetscale.query();
+    const res = await dbPlanetscale.query.products.findMany();
     out = res;
   } catch (e) {
     console.error(e);
