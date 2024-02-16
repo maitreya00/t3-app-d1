@@ -29,8 +29,8 @@ export async function GET() {
   const t0 = Date.now();
   let out;
   try {
-    // const res = await api.dbTest.allProductsPlanetscale.query();
-    const res = await dbPlanetscale.query.products.findMany();
+    const res = await api.dbTest.allProductsPlanetscale.query();
+    // const res = await dbPlanetscale.query.products.findMany();
     out = res;
   } catch (e) {
     console.error(e);
