@@ -51,7 +51,7 @@ dependencies:
 devDependencies:
   '@cloudflare/next-on-pages':
     specifier: ^1.8.6
-    version: 1.8.6(vercel@33.4.1)(wrangler@3.26.0)
+    version: 1.8.6(vercel@33.4.1)(wrangler@3.28.2)
   '@cloudflare/workers-types':
     specifier: ^4.20240129.0
     version: 4.20240129.0
@@ -107,8 +107,8 @@ devDependencies:
     specifier: ^33.4.1
     version: 33.4.1
   wrangler:
-    specifier: ^3.26.0
-    version: 3.26.0
+    specifier: ^3.28.2
+    version: 3.28.2(@cloudflare/workers-types@4.20240129.0)
 
 packages:
 
@@ -129,13 +129,13 @@ packages:
       regenerator-runtime: 0.14.1
     dev: true
 
-  /@cloudflare/kv-asset-handler@0.2.0:
-    resolution: {integrity: sha512-MVbXLbTcAotOPUj0pAMhVtJ+3/kFkwJqc5qNOleOZTv6QkZZABDMS21dSrSlVswEHwrpWC03e4fWytjqKvuE2A==}
+  /@cloudflare/kv-asset-handler@0.3.1:
+    resolution: {integrity: sha512-lKN2XCfKCmpKb86a1tl4GIwsJYDy9TGuwjhDELLmpKygQhw8X2xR4dusgpC5Tg7q1pB96Eb0rBo81kxSILQMwA==}
     dependencies:
       mime: 3.0.0
     dev: true
 
-  /@cloudflare/next-on-pages@1.8.6(vercel@33.4.1)(wrangler@3.26.0):
+  /@cloudflare/next-on-pages@1.8.6(vercel@33.4.1)(wrangler@3.28.2):
     resolution: {integrity: sha512-7slZwLTdhBz/HOFMfNft8MtrxPy12iGK1+hS/c+6HUhxUE36f1sOnXwuLMsATYzV4g1kscrN7jAllUnhpYczOg==}
     hasBin: true
     peerDependencies:
@@ -155,7 +155,7 @@ packages:
       pcre-to-regexp: 1.1.0
       semver: 7.5.4
       vercel: 33.4.1
-      wrangler: 3.26.0
+      wrangler: 3.28.2(@cloudflare/workers-types@4.20240129.0)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -4423,6 +4423,29 @@ packages:
       - utf-8-validate
     dev: true
 
+  /miniflare@3.20240129.2:
+    resolution: {integrity: sha512-BPUg8HsPmWQlRFUeiQk274i8M9L0gOvzbkjryuTvCX+M53EwBpP0gM2wyrRr/HokQoJcxWGh3InBu6L8+0bbPw==}
+    engines: {node: '>=16.13'}
+    hasBin: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      acorn: 8.11.3
+      acorn-walk: 8.3.2
+      capnp-ts: 0.7.0
+      exit-hook: 2.2.1
+      glob-to-regexp: 0.4.1
+      stoppable: 1.1.0
+      undici: 5.28.2
+      workerd: 1.20240129.0
+      ws: 8.16.0
+      youch: 3.3.3
+      zod: 3.22.4
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: true
+
   /minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -6048,18 +6071,24 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20240129.0
     dev: true
 
-  /wrangler@3.26.0:
-    resolution: {integrity: sha512-2FKDyL0wV6ws+9AHkQl5/Yzn17kG9jlpgyT7wqCDkhb5q+TCL/I8N5IKVwXe8tRrTluBI1QQZRRymoA5nu0pHw==}
+  /wrangler@3.28.2(@cloudflare/workers-types@4.20240129.0):
+    resolution: {integrity: sha512-hlD4f2avBZuR1+qo9Um6D1prdWrSRtGTo9h6o/AKce+bHQEJWoJgJKHeLmrpZlLtHg/gGR1Xa1xzrexhuIzeJw==}
     engines: {node: '>=16.17.0'}
     hasBin: true
+    peerDependencies:
+      '@cloudflare/workers-types': ^4.20230914.0
+    peerDependenciesMeta:
+      '@cloudflare/workers-types':
+        optional: true
     dependencies:
-      '@cloudflare/kv-asset-handler': 0.2.0
+      '@cloudflare/kv-asset-handler': 0.3.1
+      '@cloudflare/workers-types': 4.20240129.0
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
       '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
       blake3-wasm: 2.1.5
       chokidar: 3.5.3
       esbuild: 0.17.19
-      miniflare: 3.20240129.0
+      miniflare: 3.20240129.2
       nanoid: 3.3.7
       path-to-regexp: 6.2.1
       resolve: 1.22.8
