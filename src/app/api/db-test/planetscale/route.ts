@@ -27,16 +27,24 @@ export async function GET() {
   const data = await connection.execute("SELECT * FROM product;");
 
   const t0 = Date.now();
-  let out;
+  let out1, out2, err;
   try {
-    const res = await api.dbTest.allProductsPlanetscale.query();
-    // const res = await dbPlanetscale.query.products.findMany();
-    out = res;
+    const res1 = await api.dbTest.allProductsPlanetscale.query();
+    const res2 = await dbPlanetscale.query.products.findMany();
+    out1 = res1;
+    out2 = res2;
   } catch (e) {
     console.error(e);
-    out = JSON.stringify(e);
+    err = JSON.stringify(e);
   }
 
   const t1 = Date.now();
-  return Response.json({ time: t1 - t0, out, config, anotherOut: data.rows });
+  return Response.json({
+    time: t1 - t0,
+    out1,
+    out2,
+    err,
+    config,
+    anotherOut: data.rows,
+  });
 }
