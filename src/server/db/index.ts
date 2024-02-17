@@ -6,6 +6,8 @@ import * as sqliteSchema from "./schema-sqlite";
 import * as mysqlSchema from "./schema-mysql";
 import { drizzle as drizzleTurso } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
+import { neon } from "@neondatabase/serverless";
+import { drizzle as drizzleNeon } from "drizzle-orm/neon-http";
 
 // import postgres from "postgres";
 // import { Pool } from "pg";
@@ -43,3 +45,6 @@ export const pscaleConnection = new Client({
 export const dbPlanetscale = drizzlePlanetscale(pscaleConnection, {
   schema: mysqlSchema,
 });
+
+const sql = neon(process.env.NEON_DATABASE_URL!);
+export const dbNeon = drizzleNeon(sql);

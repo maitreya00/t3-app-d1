@@ -17,11 +17,22 @@ import { type Config } from "drizzle-kit";
 // } satisfies Config;
 //
 
+// supabase
+// export default {
+//   schema: "./src/server/db/schema-postgres.ts",
+//   out: "./src/server/db/out",
+//   driver: "pg",
+//   dbCredentials: {
+//     connectionString: process.env.PG_DATABASE_URL ?? "",
+//   },
+// } satisfies Config;
+
+// neon
 export default {
   schema: "./src/server/db/schema-postgres.ts",
   out: "./src/server/db/out",
   driver: "pg",
   dbCredentials: {
-    connectionString: process.env.PG_DATABASE_URL ?? "",
+    connectionString: process.env.NEON_DATABASE_URL ?? "",
   },
 } satisfies Config;
