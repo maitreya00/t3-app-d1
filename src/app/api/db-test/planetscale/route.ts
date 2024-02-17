@@ -7,6 +7,7 @@ import { connect } from "@planetscale/database";
 import { dbD1, dbPlanetscale } from "@/server/db";
 
 export const runtime = "edge";
+export const preferredRegion = ["bom1"];
 
 export async function GET() {
   unstable_noStore();
