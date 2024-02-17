@@ -5,7 +5,17 @@
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
-const config = {};
+const config = {
+  // webpack: (config, { webpack }) => {
+  //   config.plugins.push(
+  //     new webpack.IgnorePlugin({
+  //       resourceRegExp: /^pg-native$|^cloudflare:sockets$|^node-stream$/,
+  //     }),
+  //   );
+  //
+  //   return config;
+  // },
+};
 
 // Here we use the @cloudflare/next-on-pages next-dev module to allow us to use bindings during local development
 // (when running the application with `next dev`), for more information see:
