@@ -1,5 +1,5 @@
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { dbD1, dbPlanetscale, dbPostgres, tursoDb } from "@/server/db";
+import { dbD1, dbPlanetscale, tursoDb } from "@/server/db";
 // import { users } from "@/server/db/schema-postgres";
 import { products } from "@/server/db/schema-sqlite";
 
