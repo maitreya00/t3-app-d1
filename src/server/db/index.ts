@@ -67,12 +67,12 @@ export const dbPlanetscale = drizzlePlanetscale(
   // new Client(config).connection(),
   new Client({
     url: process.env.PLANETSCALE_DB_URL,
-    // // @ts-expect-error asd
-    // fetch: (url: string, init: RequestInit<RequestInitCfProperties>) => {
-    // eslint-disable-next-line
-    // delete (init as any).cache; // Remove cache header
-    // return fetch(url, init);
-    // },
+    // @ts-expect-error asd
+    fetch: (url: string, init: RequestInit<RequestInitCfProperties>) => {
+      // eslint-disable-next-line
+      delete (init as any).cache; // Remove cache header
+      return fetch(url, init);
+    },
   }).connection(),
   { schema: mysqlSchema },
 );
