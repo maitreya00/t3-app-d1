@@ -1,10 +1,20 @@
 import { drizzle as drizzleD1 } from "drizzle-orm/d1";
 import { drizzle as drizzlePlanetscale } from "drizzle-orm/planetscale-serverless";
+import { drizzle as drizzlePostgres } from "drizzle-orm/postgres-js";
 import { Client, connect } from "@planetscale/database";
 import * as sqliteSchema from "./schema-sqlite";
 import * as mysqlSchema from "./schema-mysql";
+import postgres from "postgres";
 
 export const dbD1 = drizzleD1(process.env.DB, { schema: sqliteSchema });
+// export const dbPostgres = drizzlePostgres(
+//   postgres(process.env.PG_DATABASE_URL ?? ""),
+// );
+export const dbPostgres = drizzlePostgres(
+  postgres(process.env.PG_DATABASE_URL ?? "", {
+    prepare: false,
+  }),
+);
 
 const regex = /mysql:\/\/([^:]+):([^@]+)@([^/]+)/;
 const matches = (process.env.PLANETSCALE_DB_URL ?? "").match(regex);
