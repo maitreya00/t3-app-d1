@@ -24,32 +24,32 @@ export async function GET() {
     },
   };
   const connection = connect(config);
-  const data = await connection.execute("SELECT * FROM product;");
 
   const t0 = Date.now();
+  const data = await connection.execute("SELECT * FROM product;");
   let out1, out2, err1, err2;
-  try {
-    const res1 = await api.dbTest.allProductsPlanetscale.query();
-    out1 = res1;
-  } catch (e) {
-    console.error(e);
-    err1 = JSON.stringify(e);
-  }
-  try {
-    const res2 = await dbPlanetscale.query.products.findMany();
-    out2 = res2;
-  } catch (e) {
-    console.error(e);
-    err2 = JSON.stringify(e);
-  }
+  // try {
+  //   const res1 = await api.dbTest.allProductsPlanetscale.query();
+  //   out1 = res1;
+  // } catch (e) {
+  //   console.error(e);
+  //   err1 = JSON.stringify(e);
+  // }
+  // try {
+  //   const res2 = await dbPlanetscale.query.products.findMany();
+  //   out2 = res2;
+  // } catch (e) {
+  //   console.error(e);
+  //   err2 = JSON.stringify(e);
+  // }
 
   const t1 = Date.now();
   return Response.json({
     time: t1 - t0,
-    out1: out1 ?? "NONE",
-    out2: out2 ?? "NONE",
-    err1,
-    err2,
+    // out1: out1 ?? "NONE",
+    // out2: out2 ?? "NONE",
+    // err1,
+    // err2,
     config,
     anotherOut: data.rows,
   });
